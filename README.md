@@ -1,168 +1,134 @@
-# 🛠️ ServEase — Home Services Booking Platform
+# ServEase 🛠️
+### A Home Services Booking Web App
 
-> A full-stack web application inspired by Urban Company.  
-> Built with **React + Tailwind CSS** (Frontend) | **Django + DRF** (Backend) | **MySQL** (Database)
+I built this as my final year project — basically an Urban Company clone but simpler.  
+You can browse services, create an account, book a service, and cancel it too.
+
+**Tech used:** React + Tailwind CSS | Django + Django REST Framework | SQLite
 
 ---
 
-## 📁 Project Structure
+## 💡 What does this app do?
+
+- Browse home services like Plumbing, Electrical, AC Repair, Cleaning etc.
+- Register and Login
+- Book any service by picking a date and time slot
+- View and cancel your bookings
+- Admin can manage everything from Django's admin panel
+
+---
+
+## 🗂️ Project Structure
 
 ```
 servease/
-├── backend/                   ← Django project
-│   ├── servease_project/      ← settings.py, urls.py (main config)
-│   ├── users/                 ← Register, Login, Logout APIs
-│   ├── services/              ← Service & Category APIs
-│   ├── bookings/              ← Booking APIs
-│   ├── fixtures/
-│   │   └── sample_data.json   ← Sample services to load into DB
-│   └── requirements.txt
+├── backend/              → Django (API + Database)
+│   ├── users/            → Login, Register, Logout
+│   ├── services/         → All service listings
+│   ├── bookings/         → Booking logic
+│   └── servease_project/ → Main settings and URLs
 │
-└── frontend/                  ← React app
-    ├── public/
-    │   └── index.html
+└── frontend/             → React App
     └── src/
-        ├── api.js             ← Axios setup (talks to Django)
-        ├── App.jsx            ← Routes
-        ├── index.css          ← Tailwind + custom styles
-        ├── context/
-        │   └── AuthContext.jsx ← Global login state
-        ├── components/
-        │   ├── Navbar.jsx
-        │   ├── Footer.jsx
-        │   └── ServiceCard.jsx
-        └── pages/
-            ├── Home.jsx
-            ├── Services.jsx
-            ├── ServiceDetail.jsx
-            ├── BookingPage.jsx
-            ├── MyBookings.jsx
-            ├── Login.jsx
-            └── Register.jsx
+        ├── pages/        → Home, Services, Booking, My Bookings etc.
+        ├── components/   → Navbar, Footer, ServiceCard
+        └── context/      → Login state (AuthContext)
 ```
 
 ---
 
-## 🚀 Step-by-Step Setup
+## 🚀 How to Run This Project
 
-### 1. MySQL — Create the Database
-
-Open MySQL and run:
-```sql
-CREATE DATABASE servease_db;
-```
-Then update `backend/servease_project/settings.py` with your MySQL username and password.
-
----
-
-### 2. Backend — Django Setup
+### Backend
 
 ```bash
 cd backend
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Create DB tables
 python manage.py makemigrations users services bookings
 python manage.py migrate
-
-# Load sample data (categories + services)
 python manage.py loaddata fixtures/sample_data.json
-
-# Create an admin account (optional, to use Django admin panel)
-python manage.py createsuperuser
-
-# Start the server
 python manage.py runserver
 ```
 
-Django runs at: **http://localhost:8000**  
-Admin panel: **http://localhost:8000/admin**
+Django will run at → http://localhost:8000
 
----
-
-### 3. Frontend — React Setup
+### Frontend
 
 ```bash
 cd frontend
-
-# Install packages
 npm install
-
-# Start React app
 npm start
 ```
 
-React runs at: **http://localhost:3000**
+React will run at → http://localhost:3000
 
+> Make sure both are running at the same time!
+git 
 ---
 
-## 🔌 API Endpoints
+## 🔌 API Endpoints I Made
 
 | Method | URL | What it does |
 |--------|-----|-------------|
 | POST | `/api/users/register/` | Create account |
 | POST | `/api/users/login/` | Login |
 | POST | `/api/users/logout/` | Logout |
-| GET | `/api/users/me/` | Get logged-in user |
-| GET | `/api/services/` | List all services |
+| GET | `/api/users/me/` | Who is logged in? |
+| GET | `/api/services/` | Get all services |
+| GET | `/api/services/?search=ac` | Search services |
 | GET | `/api/services/?category=1` | Filter by category |
-| GET | `/api/services/?search=plumbing` | Search services |
-| GET | `/api/services/categories/` | List all categories |
-| GET | `/api/services/<id>/` | Get one service |
-| GET | `/api/bookings/` | My bookings (login required) |
-| POST | `/api/bookings/` | Create booking (login required) |
+| GET | `/api/services/categories/` | Get all categories |
+| GET | `/api/services/<id>/` | Single service detail |
+| GET | `/api/bookings/` | My bookings |
+| POST | `/api/bookings/` | Book a service |
 | DELETE | `/api/bookings/<id>/` | Cancel booking |
 
 ---
 
-## 🧰 Services Offered
+## 🧰 Services Available
 
-| Category | Icon |
-|----------|------|
-| Plumbing | 🔧 |
-| Electrical | ⚡ |
-| Home Cleaning | 🧹 |
-| AC Service | ❄️ |
-| Carpentry | 🪵 |
-| Painting | 🎨 |
-| Chef at Home | 🍳 |
+Plumbing 🔧 | Electrical ⚡ | Home Cleaning 🧹
+AC Service ❄️ | Carpentry 🪵 | Painting 🎨 | Chef at Home 🍳
 
 ---
 
-## 🎨 Tech Stack
+## 📚 Tech Stack
 
-**Frontend:**
-- React 18
-- React Router v6 (for page navigation)
+**Frontend**
+- React 18 + React Router v6
+- Tailwind CSS
 - Axios (for API calls)
-- Tailwind CSS (for styling)
-- Google Fonts: Syne + Plus Jakarta Sans
 
-**Backend:**
+**Backend**
 - Django 4.2
-- Django REST Framework (API)
-- django-cors-headers (React ↔ Django communication)
-- Django Sessions (for login)
+- Django REST Framework
+- Django Sessions for auth
+- CORS headers
 
-**Database:**
-- MySQL
-
----
-
-## 💡 Key Things to Know for Interview
-
-1. **Why Django Sessions?** — Simpler than JWT for beginners. Django handles login cookies automatically.
-
-2. **Why DRF?** — Makes it easy to return JSON from Django views using Serializers.
-
-3. **Why CORS?** — React runs on port 3000, Django on 8000. Without CORS, the browser blocks the request.
-
-4. **Serializer** — Converts a Python object (e.g., a Service) into JSON to send as an API response.
-
-5. **ForeignKey** — Links two tables. A Booking is linked to both a User and a Service.
+**Database**
+- SQLite (used for development)
+- Can be switched to MySQL in production by changing 4 lines in settings.py
 
 ---
 
-Made with ❤️ as a final-year B.Tech project.
+## ⚙️ Admin Panel
+
+```bash
+python manage.py createsuperuser
+```
+
+Then go to → http://localhost:8000/admin
+You can see all users, services and bookings from here.
+
+---
+
+## 🤔 Why I chose these technologies
+
+- **Django** — Python based, easy to understand, has built-in admin panel
+- **DRF** — Makes building APIs super simple using Serializers and Views
+- **React** — Component based, easy to manage pages and state
+- **SQLite** — Zero setup needed, perfect for development and demos
+
+---
+
+*Built by Vaishnavi Pataskar — B.Tech Final Year Project* 🙂
