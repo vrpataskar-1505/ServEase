@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-800;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Syne', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  .input-field {
+    @apply w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent text-gray-700 bg-white;
+  }
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+}
+
+/* Smooth page fade-in */
+.page-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Rating stars */
+.star-filled { color: #f59e0b; }
+.star-empty  { color: #d1d5db; }
