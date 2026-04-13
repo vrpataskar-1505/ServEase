@@ -40,7 +40,7 @@ AC Service ❄️ | Carpentry 🪵 | Painting 🎨 | Chef at Home 🍳
 
 **Database**
 - SQLite (used for development)
-- Can be switched to MySQL in production by changing 4 lines in settings.py
+- Can be switched to MySQL 
 
 ---
 
