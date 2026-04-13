@@ -18,72 +18,6 @@ You can browse services, create an account, book a service, and cancel it too.
 
 ---
 
-## 🗂️ Project Structure
-
-```
-servease/
-├── backend/              → Django (API + Database)
-│   ├── users/            → Login, Register, Logout
-│   ├── services/         → All service listings
-│   ├── bookings/         → Booking logic
-│   └── servease_project/ → Main settings and URLs
-│
-└── frontend/             → React App
-    └── src/
-        ├── pages/        → Home, Services, Booking, My Bookings etc.
-        ├── components/   → Navbar, Footer, ServiceCard
-        └── context/      → Login state (AuthContext)
-```
-
----
-
-## 🚀 How to Run This Project
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python manage.py makemigrations users services bookings
-python manage.py migrate
-python manage.py loaddata fixtures/sample_data.json
-python manage.py runserver
-```
-
-Django will run at → http://localhost:8000
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-React will run at → http://localhost:3000
-
-> Make sure both are running at the same time!
-git 
----
-
-## 🔌 API Endpoints I Made
-
-| Method | URL | What it does |
-|--------|-----|-------------|
-| POST | `/api/users/register/` | Create account |
-| POST | `/api/users/login/` | Login |
-| POST | `/api/users/logout/` | Logout |
-| GET | `/api/users/me/` | Who is logged in? |
-| GET | `/api/services/` | Get all services |
-| GET | `/api/services/?search=ac` | Search services |
-| GET | `/api/services/?category=1` | Filter by category |
-| GET | `/api/services/categories/` | Get all categories |
-| GET | `/api/services/<id>/` | Single service detail |
-| GET | `/api/bookings/` | My bookings |
-| POST | `/api/bookings/` | Book a service |
-| DELETE | `/api/bookings/<id>/` | Cancel booking |
-
----
 
 ## 🧰 Services Available
 
@@ -107,8 +41,7 @@ AC Service ❄️ | Carpentry 🪵 | Painting 🎨 | Chef at Home 🍳
 
 **Database**
 - SQLite (used for development)
-- Can be switched to MySQL in production by changing 4 lines in settings.py
-
+- Can be switched to MySQL 
 ---
 
 ## ⚙️ Admin Panel
@@ -131,4 +64,4 @@ You can see all users, services and bookings from here.
 
 ---
 
-*Built by Vaishnavi Pataskar — B.Tech Final Year Project* 🙂
+

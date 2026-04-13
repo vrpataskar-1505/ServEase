@@ -4,13 +4,13 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 from .serializers import RegisterSerializer, UserSerializer
 
-
+# register a new user
 @api_view(['POST'])
 def register_view(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
-        login(request, user)
+        login(request, user)        # auto login after register
         return Response({
             'message': 'Account created! Welcome to ServEase.',
             'user': UserSerializer(user).data
@@ -18,6 +18,8 @@ def register_view(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+# login existing user=>
 @api_view(['POST'])
 def login_view(request):
     username = request.data.get('username', '').strip()
@@ -26,6 +28,7 @@ def login_view(request):
     if not username or not password:
         return Response({'error': 'Please enter username and password.'}, status=400)
 
+    # authenticate checks if username and password are correct=>
     user = authenticate(request, username=username, password=password)
     if user:
         login(request, user)
@@ -35,13 +38,14 @@ def login_view(request):
         })
     return Response({'error': 'Wrong username or password.'}, status=status.HTTP_401_UNAUTHORIZED)
 
-
+# logout current user=>
 @api_view(['POST'])
 def logout_view(request):
     logout(request)
     return Response({'message': 'Logged out. See you soon!'})
 
 
+# get currently logged in user info=>
 @api_view(['GET'])
 def me_view(request):
     if request.user.is_authenticated:

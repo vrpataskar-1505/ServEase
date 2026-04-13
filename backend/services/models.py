@@ -1,9 +1,9 @@
 from django.db import models
 
-
+# category model - e.g. Plumbing, Electrical, Cleaning
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    icon = models.CharField(max_length=10, default='🔧')
+    icon = models.CharField(max_length=10, default='🔧')    # emoji icon
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-
+# service model - e.g. "AC Service", "Kitchen Deep Clean"=>
 class Service(models.Model):
     name = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='services')
