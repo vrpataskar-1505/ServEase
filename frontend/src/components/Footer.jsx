@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//footer on all the pages
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 mt-16">
       <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-        {/* Brand */}
+        {/* Brand section - logo and tagline*/}
         <div>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold">S</div>
@@ -17,6 +18,7 @@ export default function Footer() {
           <p className="text-sm text-gray-400 leading-relaxed">
             Trusted home services at your doorstep. Quality professionals, on time, every time.
           </p>
+          {/* social media icons*/}
           <div className="flex gap-3 mt-4 text-xl">
             <span title="Facebook" className="cursor-pointer hover:text-orange-400 transition-colors">📘</span>
             <span title="Instagram" className="cursor-pointer hover:text-orange-400 transition-colors">📸</span>
@@ -24,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick links */}
+        {/* quick navigation links*/}
         <div>
           <h4 className="text-white font-semibold mb-4" style={{fontFamily:'Syne,sans-serif'}}>Quick Links</h4>
           <ul className="space-y-2 text-sm">
@@ -35,7 +37,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/*contact info */}
         <div>
           <h4 className="text-white font-semibold mb-4" style={{fontFamily:'Syne,sans-serif'}}>Contact</h4>
           <ul className="space-y-2 text-sm text-gray-400">
@@ -47,6 +49,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/*copyright bar  */}
       <div className="border-t border-gray-800 px-4 py-4 text-center text-xs text-gray-500">
         © {new Date().getFullYear()} ServEase. Made with ❤️ by a final-year B.Tech student.
       </div>

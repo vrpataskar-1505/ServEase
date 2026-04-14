@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import API from '../api';
 import ServiceCard from '../components/ServiceCard';
 
+// created a context to store login state globally
+// so I don't have to pass user data as props to every component
 const STATS = [
   { number: '50,000+', label: 'Happy Customers' },
   { number: '1,200+', label: 'Verified Experts' },
@@ -22,6 +24,8 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
+  // when app loads-> check if user is already logged in
+  // handles page refresh -> session cookie is sent automatically
   useEffect(() => {
     API.get('/services/categories/').then(res => setCategories(res.data)).catch(() => {});
     API.get('/services/').then(res => {

@@ -1,7 +1,7 @@
 # ServEase 🛠️
 ### A Home Services Booking Web App
 
-I built this as my final year project — basically an Urban Company clone but simpler.  
+I built this project - basically an Urban Company clone but simpler.  
 You can browse services, create an account, book a service, and cancel it too.
 
 **Tech used:** React + Tailwind CSS | Django + Django REST Framework | SQLite
@@ -17,7 +17,6 @@ You can browse services, create an account, book a service, and cancel it too.
 - Admin can manage everything from Django's admin panel
 
 ---
-
 
 ## 🧰 Services Available
 
@@ -42,18 +41,9 @@ AC Service ❄️ | Carpentry 🪵 | Painting 🎨 | Chef at Home 🍳
 **Database**
 - SQLite (used for development)
 - Can be switched to MySQL 
----
-
-## ⚙️ Admin Panel
-
-```bash
-python manage.py createsuperuser
-```
-
-Then go to → http://localhost:8000/admin
-You can see all users, services and bookings from here.
 
 ---
+
 
 ## 🤔 Why I chose these technologies
 
@@ -63,5 +53,4 @@ You can see all users, services and bookings from here.
 - **SQLite** — Zero setup needed, perfect for development and demos
 
 ---
-
 

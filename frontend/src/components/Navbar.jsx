@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+
+// getting user info and logout function from context
 export default function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); //for mobile menu toggle
 
   const handleLogout = async () => {
     await logout();
-    navigate('/');
+    navigate('/');    //redirect to home page after logout
   };
 
+    // highlights active nav link
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -35,6 +38,7 @@ export default function Navbar() {
           <Link to="/services" className={`text-sm font-medium transition-colors ${isActive('/services') ? 'text-orange-500' : 'text-gray-600 hover:text-orange-500'}`}>
             Services
           </Link>
+          {/* only show My Bookings if user is logged in */}
           {user && (
             <Link to="/my-bookings" className={`text-sm font-medium transition-colors ${isActive('/my-bookings') ? 'text-orange-500' : 'text-gray-600 hover:text-orange-500'}`}>
               My Bookings
@@ -42,10 +46,12 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Auth buttons */}
+        {/* login logout buttons */}
         <div className="hidden md:flex items-center gap-3">
           {user ? (
             <div className="flex items-center gap-3">
+
+              {/* avatar- first letter of the name*/}
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-semibold text-sm">
                   {(user.first_name || user.username).charAt(0).toUpperCase()}
@@ -70,13 +76,13 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile hamburger */}
+        {/* hamburger menu for mobiles */}
         <button className="md:hidden p-2 text-gray-600" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? '✕' : '☰'}
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4">
           <Link to="/" onClick={() => setMenuOpen(false)} className="text-gray-700 font-medium">Home</Link>
