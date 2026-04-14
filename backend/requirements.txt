@@ -4,5 +4,6 @@ django-cors-headers==4.3.1
 #mysqlclient==2.2.0
 PyMySQL==1.1.2
 
+#for deployment of backend=> render
 gunicorn==21.2.0
 whitenoise==6.6.0
