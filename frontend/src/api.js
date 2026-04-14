@@ -10,7 +10,7 @@ API.interceptors.request.use(async (config) => {
   // Get CSRF token from Django before every POST
   if (['post', 'put', 'delete', 'patch'].includes(config.method)) {
     try {
-      await axios.get('http://localhost:8000/api/users/me/', { withCredentials: true });
+      await axios.get('https://servease-backend-lqpn.onrender.com/api/users/me/', { withCredentials: true });
     } catch {}
     const csrfToken = getCookie('csrftoken');
     if (csrfToken) config.headers['X-CSRFToken'] = csrfToken;
