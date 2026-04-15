@@ -67,10 +67,19 @@ REST_FRAMEWORK = {
 }
 
 # ─── CORS (lets React on port 3000 talk to Django on port 8000) ───────────────
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://serv-ease-72ehv44r3-vrpataskar-1505s-projects.vercel.app',
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000']
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://serv-ease-72ehv44r3-vrpataskar-1505s-projects.vercel.app',
+]
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
