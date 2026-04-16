@@ -70,15 +70,17 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://serv-ease-72ehv44r3-vrpataskar-1505s-projects.vercel.app',
+    'https://serv-ease-sage.vercel.app',
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://serv-ease-.*\.vercel\.app$",
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'https://serv-ease-72ehv44r3-vrpataskar-1505s-projects.vercel.app',
+    'https://serv-ease-sage.vercel.app',
+    'https://serv-ease-e5nmpjreb-vrpataskar-1505s-projects.vercel.app',
 ]
 
 LANGUAGE_CODE = 'en-us'
